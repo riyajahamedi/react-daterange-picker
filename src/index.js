@@ -23,6 +23,25 @@ function App() {
     });
   };
 
+  const ranges = {
+      Today: [moment(), moment()],
+      Yesterday: [
+        moment().subtract(1, "days"),
+        moment().subtract(1, "days")
+      ],
+      "Last 7 Days": [moment().subtract(6, "days"), moment()],
+      "Last 30 Days": [moment().subtract(29, "days"), moment()],
+      "This Month": [moment().startOf("month"), moment().endOf("month")],
+      "Last Month": [
+        moment()
+          .subtract(1, "month")
+          .startOf("month"),
+        moment()
+          .subtract(1, "month")
+          .endOf("month")
+      ]
+    };
+
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
@@ -31,26 +50,7 @@ function App() {
       <br />
       <DateRangePicker
         onApply={setDates}
-        ranges={{
-          Today: [moment(), moment()],
-          Yesterday: [
-            moment().subtract(1, "days"),
-            moment().subtract(1, "days")
-          ],
-          "Last 7 Days": [moment().subtract(6, "days"), moment()],
-          "Last 30 Days": [moment().subtract(29, "days"), moment()],
-          "This Month": [moment().startOf("month"), moment().endOf("month")],
-          "Last Month": [
-            moment()
-              .subtract(1, "month")
-              .startOf("month"),
-            moment()
-              .subtract(1, "month")
-              .endOf("month")
-          ]
-        }}
-        startDate="8/1/2019"
-        endDate="8/14/2019"
+        initialSettings={{ startDate: '08/20/2022', endDate: '08/28/2022', ranges: ranges }}
       >
         <input
           type="text"
