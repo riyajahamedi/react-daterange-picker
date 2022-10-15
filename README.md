@@ -1,2 +1,3 @@
 # react-daterange-picker
-Created with CodeSandbox
+
+React daterange picker sample code
